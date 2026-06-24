@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rescue Gatitos — Entrar</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=DM+Serif+Display:ital@0;1&amp;display=swap" rel="stylesheet"/>
+
+<link href="/css/index.css" rel="stylesheet"/></head>
+<body>
+<div class="layout">
+<!-- ═══ LEFT: background image (defina a URL no CSS acima) ═══ -->
+<section class="left"></section>
+<!-- ═══ RIGHT: auth panel ═══ -->
+<aside class="right">
+<!-- Brand -->
+<div class="brand">
+<div class="brand-icon">
+<svg fill="none" height="18" viewbox="0 0 64 64" width="18" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="32" cy="40" fill="white" rx="14" ry="11"></ellipse>
+<ellipse cx="14" cy="30" fill="white" rx="6" ry="8"></ellipse>
+<ellipse cx="50" cy="30" fill="white" rx="6" ry="8"></ellipse>
+<ellipse cx="22" cy="20" fill="white" rx="5" ry="7"></ellipse>
+<ellipse cx="42" cy="20" fill="white" rx="5" ry="7"></ellipse>
+</svg>
+</div>
+<div class="brand-name">
+        Rescue Gatitos
+        <span>to work</span>
+</div>
+</div>
+<!-- Tabs -->
+<div class="tabs" role="tablist">
+<button class="tab-btn active" id="tab-login" onclick="switchTab('login')" role="tab">Entrar</button>
+<button class="tab-btn" id="tab-register" onclick="switchTab('register')" role="tab">Cadastrar</button>
+</div>
+<!-- ── Login Form ── -->
+<div class="form-panel active" id="panel-login">
+<div class="form-header">
+<h1>Bem-vindo de volta</h1>
+<p>Entre com suas credenciais para continuar.</p>
+</div>
+<div class="feedback" id="login-feedback"></div>
+<div class="field">
+<label for="login-email">E-mail</label>
+<input autocomplete="email" id="login-email" placeholder="voce@email.com" type="email"/>
+<span class="error-msg" id="login-email-err">Informe um e-mail válido.</span>
+</div>
+<div class="field">
+<label for="login-password">Senha</label>
+<div class="pw-wrap">
+<input autocomplete="current-password" id="login-password" placeholder="••••••••" type="password"/>
+<button aria-label="Mostrar senha" class="pw-toggle" onclick="togglePw('login-password', this)" type="button">
+<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+</button>
+</div>
+<span class="error-msg" id="login-pass-err">Informe sua senha.</span>
+</div>
+<button class="btn-submit" id="btn-login" onclick="handleLogin()">Entrar</button>
+<div class="form-footer">
+        Não tem conta? <a href="#" onclick="switchTab('register'); return false;">Cadastre-se</a>
+</div>
+</div>
+<!-- ── Register Form ── -->
+<div class="form-panel" id="panel-register">
+<div class="form-header">
+<h1>Crie sua conta</h1>
+<p>Preencha os campos para se cadastrar.</p>
+</div>
+<div class="feedback" id="register-feedback"></div>
+<div class="field">
+<label for="reg-nick">Apelido</label>
+<input autocomplete="nickname" id="reg-nick" placeholder="Como quer ser chamado?" type="text"/>
+<span class="error-msg" id="reg-nick-err">Informe um apelido.</span>
+</div>
+<div class="field">
+<label for="reg-email">E-mail</label>
+<input autocomplete="email" id="reg-email" placeholder="voce@email.com" type="email"/>
+<span class="error-msg" id="reg-email-err">Informe um e-mail válido.</span>
+</div>
+<div class="field">
+<label for="reg-password">Senha</label>
+<div class="pw-wrap">
+<input autocomplete="new-password" id="reg-password" placeholder="Mínimo 6 caracteres" type="password"/>
+<button aria-label="Mostrar senha" class="pw-toggle" onclick="togglePw('reg-password', this)" type="button">
+<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+</button>
+</div>
+<span class="error-msg" id="reg-pass-err">Senha deve ter ao menos 6 caracteres.</span>
+</div>
+<button class="btn-submit" id="btn-register" onclick="handleRegister()">Criar conta</button>
+<div class="form-footer">
+        Já tem conta? <a href="#" onclick="switchTab('login'); return false;">Entrar</a>
+</div>
+</div>
+</aside>
+</div>
+
+<script src="/js/index.js"></script></body>
+</html>
