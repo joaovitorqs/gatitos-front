@@ -104,7 +104,7 @@ async function handleLogin() {
         `Bem-vindo, ${data.nickName}! Redirecionando...`
       );
 
-      // window.location.href = '/dashboard';
+      window.location.href = '/pages/game.html';
     } else {
       showFeedback(
         'login-feedback',
@@ -186,7 +186,7 @@ async function handleRegister() {
         `Conta criada! Bem-vindo, ${data.nickName}!`
       );
 
-      // window.location.href = '/dashboard';
+       window.location.href = '/pages/game.html';
     } else {
       showFeedback(
         'register-feedback',
