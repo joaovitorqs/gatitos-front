@@ -1,4 +1,5 @@
 /* ── Reset & variáveis globais ── */
+ @import url('https://googleapis.com');
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -7,18 +8,10 @@
   --border:     #E4E4E7;
   --text:       #18181B;
   --muted:      #71717A;
-  --accent:     #2D6A6A;
-  --accent-h:   #235454;
+  --accent:     #9e6d4a;
+  --accent-h:   #B57C54;
   --accent-s:   #E8F2F2;
   --error:      #DC2626;
   --radius:     10px;
   --transition: 180ms ease;
-}
-
-html, body {
-  height: 100%;
-  font-family: 'Inter', sans-serif;
-  background: var(--white);
-  color: var(--text);
-  -webkit-font-smoothing: antialiased;
 }
