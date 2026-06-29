@@ -1,4 +1,5 @@
-
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Pixelify+Sans:wght@400..700&family=Silkscreen:wght@400;700&family=Tiny5&display=swap');
+    
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -7,8 +8,8 @@
       --border:     #E4E4E7;
       --text:       #18181B;
       --muted:      #71717A;
-      --accent:     #2D6A6A;
-      --accent-h:   #235454;
+      --accent:     #9e6d4a;
+      --accent-h:   #B57C54;
       --accent-s:   #E8F2F2;
       --error:      #DC2626;
       --radius:     10px;
@@ -81,21 +82,11 @@
     }
 
     .brand-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 17px;
+      font-family:  'Pixelify Sans', sans-serif;
+      font-weight: 700;
+      font-size: 32px;
       color: var(--text);
       line-height: 1;
-    }
-
-    .brand-name span {
-      display: block;
-      font-family: 'Inter', sans-serif;
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      text-transform: uppercase;
-      margin-top: 2px;
     }
 
     /* ── Tabs ── */
@@ -115,7 +106,7 @@
       border: none;
       border-radius: 7px;
       background: transparent;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Silkscreen', sans-serif;
       font-size: 13px;
       font-weight: 500;
       color: var(--muted);
@@ -144,7 +135,7 @@
     }
 
     .form-header h1 {
-      font-family: 'DM Serif Display', serif;
+      font-family: 'Silkscreen', sans-serif;
       font-size: 24px;
       font-weight: 400;
       color: var(--text);
@@ -152,6 +143,7 @@
     }
 
     .form-header p {
+      font-family: 'Silkscreen', sans-serif;
       font-size: 13px;
       color: var(--muted);
       margin-top: 6px;
@@ -179,7 +171,7 @@
       border: 1.5px solid var(--border);
       border-radius: var(--radius);
       background: var(--white);
-      font-family: 'Inter', sans-serif;
+      font-family: 'Silkscreen', sans-serif;
       font-size: 14px;
       color: var(--text);
       outline: none;
@@ -235,7 +227,7 @@
       border-radius: var(--radius);
       background: var(--accent);
       color: #fff;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Silkscreen', sans-serif;
       font-size: 14px;
       font-weight: 500;
       cursor: pointer;
@@ -272,6 +264,7 @@
     .feedback {
       padding: 10px 13px;
       border-radius: var(--radius);
+      font-family: 'Silkscreen', sans-serif;
       font-size: 13px;
       display: none;
     }
@@ -282,6 +275,7 @@
 
     /* ── Footer ── */
     .form-footer {
+      font-family: 'Silkscreen', sans-serif;
       font-size: 12px;
       color: var(--muted);
       text-align: center;
@@ -302,6 +296,7 @@
       align-items: center;
       gap: 10px;
       color: #A1A1AA;
+      font-family: 'Silkscreen', sans-serif;
       font-size: 11px;
     }
 
