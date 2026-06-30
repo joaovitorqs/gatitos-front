@@ -17,7 +17,7 @@
       --accent: #9e6d4a;
       --accent-h: #B57C54;
       --accent-s: #E8F2F2;
-      --error: #DC2626;
+      --error: #ffa9a9;
       --radius: 10px;
       --transition: 180ms ease;
     }
@@ -128,8 +128,6 @@
       background: rgba(255, 255, 255, .12);
 
       border: 1px solid rgba(255, 255, 255, .15);
-
-      color:#18181B;
 
       border-radius: var(--radius);
     }
