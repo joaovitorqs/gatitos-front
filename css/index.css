@@ -129,6 +129,8 @@
 
       border: 1px solid rgba(255, 255, 255, .15);
 
+      color:#18181B;
+
       border-radius: var(--radius);
     }
 
@@ -141,8 +143,8 @@
       font-family: 'Pixelify Sans', sans-serif;
       font-size: 13px;
       font-weight: 500;
-      color: var(--muted);
       cursor: pointer;
+      color:#18181B;
       transition: all var(--transition);
     }
 
@@ -150,7 +152,7 @@
 
       background: rgba(255, 255, 255, .95);
 
-      color: var(--text);
+      color:#18181B;
 
       box-shadow: 0 4px 12px rgba(0, 0, 0, .12);
     }
@@ -205,7 +207,7 @@
 
       background: #fff;
 
-      font-family: 'Pixelify Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
 
       font-size: 14px;
 
