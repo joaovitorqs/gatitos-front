@@ -10,17 +10,123 @@
 <body>
   <div class="layout">
 
-    <section class="bloco bloco1"></section>
-    <section class="bloco bloco2"></section>
+    <!-- Bloco 1: caixa do gatinho para clicar -->
+    <section class="bloco bloco1">
+      <div class="click-area" id="clickArea">
+        <div class="cat-box" id="catBox">🐱</div>
+        <span class="click-hint">Clique para resgatar um gatinho!</span>
+      </div>
+    </section>
 
-    <section class="bloco bloco3"></section>
-    <section class="bloco bloco4"></section>
-    <section class="bloco bloco5"></section>
+    <!-- Bloco 2: estatísticas -->
+    <section class="bloco bloco2">
+      <div class="stats">
+        <h2>Estatísticas</h2>
+        <div class="stat-row">
+          <span class="stat-label">🐾 Gatinhos</span>
+          <span class="stat-value" id="statCats">0</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">💰 Dinheiro</span>
+          <span class="stat-value" id="statMoney">R$ 0</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">👆 Poder de Clique</span>
+          <span class="stat-value" id="statClickLevel">Nível 1</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">⚙️ Autoclick</span>
+          <span class="stat-value" id="statAutoLevel">Nível 0</span>
+        </div>
+      </div>
+    </section>
 
-    <section class="bloco bloco6"></section>
-    <section class="bloco bloco7"></section>
+    <!-- Blocos 3, 4 e 5: placeholders "Trabalhando" -->
+    <section class="bloco bloco3 placeholder-bloco">
+      <div class="placeholder-content">
+        <span class="placeholder-emoji">🐈‍⬛🛠️</span>
+        <p>Trabalhando...</p>
+      </div>
+    </section>
+    <section class="bloco bloco4 placeholder-bloco">
+      <div class="placeholder-content">
+        <span class="placeholder-emoji">🐈🧱</span>
+        <p>Trabalhando...</p>
+      </div>
+    </section>
+    <section class="bloco bloco5 placeholder-bloco">
+      <div class="placeholder-content">
+        <span class="placeholder-emoji">🐱🔧</span>
+        <p>Trabalhando...</p>
+      </div>
+    </section>
 
-</div>
+    <!-- Bloco 6: venda de gatinhos e upgrades -->
+    <section class="bloco bloco6">
+      <div class="shop">
+        <div class="shop-column">
+          <h2>Adoção</h2>
+          <div class="shop-item">
+            <div class="shop-item-info">
+              <strong>Adotar um gatinho</strong>
+              <span>Vende 1 gatinho por dinheiro</span>
+            </div>
+            <button id="sellOneBtn" class="shop-btn">Vender (R$ <span id="sellOnePrice">10</span>)</button>
+          </div>
+          <div class="shop-item">
+            <div class="shop-item-info">
+              <strong>Adotar todos</strong>
+              <span>Vende todos os gatinhos disponíveis</span>
+            </div>
+            <button id="sellAllBtn" class="shop-btn">Vender Todos</button>
+          </div>
+        </div>
+
+        <div class="shop-column">
+          <h2>Upgrades</h2>
+          <div class="shop-item">
+            <div class="shop-item-info">
+              <strong>Poder de Clique</strong>
+              <span id="clickUpgradeDesc">+1 gatinho por clique</span>
+            </div>
+            <button id="buyClickBtn" class="shop-btn">Comprar (R$ <span id="clickUpgradePrice">50</span>)</button>
+          </div>
+          <div class="shop-item">
+            <div class="shop-item-info">
+              <strong>Autoclick</strong>
+              <span id="autoUpgradeDesc">Gera gatinhos automaticamente</span>
+            </div>
+            <button id="buyAutoBtn" class="shop-btn">Comprar (R$ <span id="autoUpgradePrice">100</span>)</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bloco 7: configurações -->
+    <section class="bloco bloco7">
+      <div class="settings">
+        <h2>Configurações</h2>
+
+        <div class="settings-row">
+          <label for="sfxToggle">🔊 Efeitos sonoros</label>
+          <input type="checkbox" id="sfxToggle" checked />
+        </div>
+        <div class="settings-row">
+          <label for="musicToggle">🎵 Música</label>
+          <input type="checkbox" id="musicToggle" checked />
+        </div>
+
+        <button id="resetPasswordBtn" class="settings-btn">Redefinir senha</button>
+        <button id="logoutBtn" class="settings-btn settings-btn-danger">Sair</button>
+
+        <div class="credits">
+          <p>Desenvolvido por <strong>Rescue Gatitos</strong></p>
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub do projeto</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
   <script src="/js/game.js"></script>
 </body>
 </html>
