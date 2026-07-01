@@ -30,3 +30,221 @@
     window.location.replace('../index.html');
   }
 })();
+
+/* ── Estado do jogo ── */
+
+const SAVE_KEY = 'rescueGatitosSave';
+
+const defaultState = {
+  cats: 0,
+  money: 0,
+  clickLevel: 1,      // gatinhos por clique = clickLevel
+  autoLevel: 0,        // gatinhos por segundo = autoLevel
+  sfx: true,
+  music: true
+};
+
+let state = loadState();
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(SAVE_KEY);
+    if (!raw) return { ...defaultState };
+    return { ...defaultState, ...JSON.parse(raw) };
+  } catch {
+    return { ...defaultState };
+  }
+}
+
+function saveState() {
+  localStorage.setItem(SAVE_KEY, JSON.stringify(state));
+}
+
+/* ── Preços (escalam com o nível) ── */
+
+const SELL_ONE_BASE = 10;
+const CLICK_UPGRADE_BASE = 50;
+const AUTO_UPGRADE_BASE = 100;
+
+function sellOnePrice() {
+  return SELL_ONE_BASE;
+}
+
+function clickUpgradePrice() {
+  return Math.round(CLICK_UPGRADE_BASE * Math.pow(1.6, state.clickLevel - 1));
+}
+
+function autoUpgradePrice() {
+  return Math.round(AUTO_UPGRADE_BASE * Math.pow(1.7, state.autoLevel));
+}
+
+/* ── Referências DOM ── */
+
+let els = {};
+
+function cacheEls() {
+  els = {
+    catBox: document.getElementById('catBox'),
+    clickArea: document.getElementById('clickArea'),
+    statCats: document.getElementById('statCats'),
+    statMoney: document.getElementById('statMoney'),
+    statClickLevel: document.getElementById('statClickLevel'),
+    statAutoLevel: document.getElementById('statAutoLevel'),
+    sellOneBtn: document.getElementById('sellOneBtn'),
+    sellOnePrice: document.getElementById('sellOnePrice'),
+    sellAllBtn: document.getElementById('sellAllBtn'),
+    buyClickBtn: document.getElementById('buyClickBtn'),
+    clickUpgradePrice: document.getElementById('clickUpgradePrice'),
+    clickUpgradeDesc: document.getElementById('clickUpgradeDesc'),
+    buyAutoBtn: document.getElementById('buyAutoBtn'),
+    autoUpgradePrice: document.getElementById('autoUpgradePrice'),
+    autoUpgradeDesc: document.getElementById('autoUpgradeDesc'),
+    sfxToggle: document.getElementById('sfxToggle'),
+    musicToggle: document.getElementById('musicToggle'),
+    resetPasswordBtn: document.getElementById('resetPasswordBtn'),
+    logoutBtn: document.getElementById('logoutBtn')
+  };
+}
+
+function formatMoney(v) {
+  return 'R$ ' + v.toLocaleString('pt-BR');
+}
+
+function render() {
+  els.statCats.textContent = state.cats.toLocaleString('pt-BR');
+  els.statMoney.textContent = formatMoney(state.money);
+  els.statClickLevel.textContent = 'Nível ' + state.clickLevel;
+  els.statAutoLevel.textContent = 'Nível ' + state.autoLevel;
+
+  els.sellOnePrice.textContent = sellOnePrice();
+  els.clickUpgradePrice.textContent = clickUpgradePrice();
+  els.autoUpgradePrice.textContent = autoUpgradePrice();
+
+  els.clickUpgradeDesc.textContent = `+1 gatinho por clique (atual: ${state.clickLevel})`;
+  els.autoUpgradeDesc.textContent = state.autoLevel > 0
+    ? `Gera ${state.autoLevel} gatinho(s)/seg automaticamente`
+    : 'Gera gatinhos automaticamente';
+
+  els.sellOneBtn.disabled = state.cats < 1;
+  els.sellAllBtn.disabled = state.cats < 1;
+  els.buyClickBtn.disabled = state.money < clickUpgradePrice();
+  els.buyAutoBtn.disabled = state.money < autoUpgradePrice();
+
+  els.sfxToggle.checked = state.sfx;
+  els.musicToggle.checked = state.music;
+}
+
+/* ── Ações ── */
+
+function showFloatText(text, x, y) {
+  const el = document.createElement('div');
+  el.className = 'float-text';
+  el.textContent = text;
+  el.style.left = x + 'px';
+  el.style.top = y + 'px';
+  els.clickArea.style.position = 'relative';
+  els.clickArea.appendChild(el);
+  setTimeout(() => el.remove(), 800);
+}
+
+function handleClick(e) {
+  state.cats += state.clickLevel;
+  saveState();
+  render();
+
+  els.catBox.classList.remove('bounce');
+  void els.catBox.offsetWidth; // reinicia a animação
+  els.catBox.classList.add('bounce');
+
+  const rect = els.clickArea.getBoundingClientRect();
+  const x = (e.clientX ?? rect.width / 2) - rect.left;
+  const y = (e.clientY ?? rect.height / 2) - rect.top;
+  showFloatText('+' + state.clickLevel, x, y);
+}
+
+function sellOne() {
+  if (state.cats < 1) return;
+  state.cats -= 1;
+  state.money += sellOnePrice();
+  saveState();
+  render();
+}
+
+function sellAll() {
+  if (state.cats < 1) return;
+  state.money += state.cats * sellOnePrice();
+  state.cats = 0;
+  saveState();
+  render();
+}
+
+function buyClickUpgrade() {
+  const price = clickUpgradePrice();
+  if (state.money < price) return;
+  state.money -= price;
+  state.clickLevel += 1;
+  saveState();
+  render();
+}
+
+function buyAutoUpgrade() {
+  const price = autoUpgradePrice();
+  if (state.money < price) return;
+  state.money -= price;
+  state.autoLevel += 1;
+  saveState();
+  render();
+}
+
+/* ── Autoclick (tick a cada segundo) ── */
+
+function autoTick() {
+  if (state.autoLevel > 0) {
+    state.cats += state.autoLevel;
+    saveState();
+    render();
+  }
+}
+
+/* ── Configurações ── */
+
+function toggleSfx() {
+  state.sfx = els.sfxToggle.checked;
+  saveState();
+}
+
+function toggleMusic() {
+  state.music = els.musicToggle.checked;
+  saveState();
+}
+
+function resetPassword() {
+  // Placeholder: fluxo real de redefinição ainda será implementado
+  alert('Em breve: fluxo de redefinição de senha.');
+}
+
+function logout() {
+  localStorage.removeItem('token');
+  window.location.replace('../index.html');
+}
+
+/* ── Inicialização ── */
+
+function init() {
+  cacheEls();
+  render();
+
+  els.catBox.addEventListener('click', handleClick);
+  els.sellOneBtn.addEventListener('click', sellOne);
+  els.sellAllBtn.addEventListener('click', sellAll);
+  els.buyClickBtn.addEventListener('click', buyClickUpgrade);
+  els.buyAutoBtn.addEventListener('click', buyAutoUpgrade);
+  els.sfxToggle.addEventListener('change', toggleSfx);
+  els.musicToggle.addEventListener('change', toggleMusic);
+  els.resetPasswordBtn.addEventListener('click', resetPassword);
+  els.logoutBtn.addEventListener('click', logout);
+
+  setInterval(autoTick, 1000);
+}
+
+document.addEventListener('DOMContentLoaded', init);
