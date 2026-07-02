@@ -116,10 +116,10 @@ function render() {
   els.clickUpgradePrice.textContent = clickUpgradePrice();
   els.autoUpgradePrice.textContent = autoUpgradePrice();
 
-  els.clickUpgradeDesc.textContent = `+1 gatinho por clique (atual: ${state.clickLevel})`;
+  els.clickUpgradeDesc.textContent = `Gere ${state.clickLevel + 1} gatito por clique`;
   els.autoUpgradeDesc.textContent = state.autoLevel > 0
-    ? `Gera ${state.autoLevel} gatinho(s)/seg automaticamente`
-    : 'Gera gatinhos automaticamente';
+    ? `Gere ${state.autoLevel+1} gatito(s)/seg automaticamente`
+    : 'Gere gatitos automaticamente';
 
   els.sellOneBtn.disabled = state.cats < 1;
   els.sellAllBtn.disabled = state.cats < 1;
