@@ -40,8 +40,6 @@ const defaultState = {
   money: 0,
   clickLevel: 1,      // gatinhos por clique = clickLevel
   autoLevel: 0,        // gatinhos por segundo = autoLevel
-  sfx: true,
-  music: true
 };
 
 let state = loadState();
@@ -99,8 +97,6 @@ function cacheEls() {
     buyAutoBtn: document.getElementById('buyAutoBtn'),
     autoUpgradePrice: document.getElementById('autoUpgradePrice'),
     autoUpgradeDesc: document.getElementById('autoUpgradeDesc'),
-    sfxToggle: document.getElementById('sfxToggle'),
-    musicToggle: document.getElementById('musicToggle'),
     resetPasswordBtn: document.getElementById('resetPasswordBtn'),
     logoutBtn: document.getElementById('logoutBtn')
   };
@@ -130,8 +126,6 @@ function render() {
   els.buyClickBtn.disabled = state.money < clickUpgradePrice();
   els.buyAutoBtn.disabled = state.money < autoUpgradePrice();
 
-  els.sfxToggle.checked = state.sfx;
-  els.musicToggle.checked = state.music;
 }
 
 /* ── Ações ── */
@@ -208,16 +202,6 @@ function autoTick() {
 
 /* ── Configurações ── */
 
-function toggleSfx() {
-  state.sfx = els.sfxToggle.checked;
-  saveState();
-}
-
-function toggleMusic() {
-  state.music = els.musicToggle.checked;
-  saveState();
-}
-
 function resetPassword() {
   // Placeholder: fluxo real de redefinição ainda será implementado
   alert('Em breve: fluxo de redefinição de senha.');
@@ -239,8 +223,6 @@ function init() {
   els.sellAllBtn.addEventListener('click', sellAll);
   els.buyClickBtn.addEventListener('click', buyClickUpgrade);
   els.buyAutoBtn.addEventListener('click', buyAutoUpgrade);
-  els.sfxToggle.addEventListener('change', toggleSfx);
-  els.musicToggle.addEventListener('change', toggleMusic);
   els.resetPasswordBtn.addEventListener('click', resetPassword);
   els.logoutBtn.addEventListener('click', logout);
 
