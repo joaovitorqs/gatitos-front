@@ -93,8 +93,8 @@ body{
 /* ── Bloco 1: área de clique ── */
 
 .click-area{
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -104,8 +104,10 @@ body{
 }
 
 .cat-box{
-    font-size:min(12vh, 8vw);
-    line-height:1;
+    width: 75%;
+    height: 75%;
+    object-fit:contain;
+    image-rendering: pixelated;
     cursor:pointer;
     user-select:none;
     transition:transform 0.08s ease;
@@ -124,12 +126,6 @@ body{
     0%{ transform:scale(1); }
     40%{ transform:scale(1.15); }
     100%{ transform:scale(1); }
-}
-
-.click-hint{
-    font-size:0.85rem;
-    color:#bbcebb;
-    letter-spacing:0.02em;
 }
 
 .float-text{
