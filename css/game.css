@@ -356,3 +356,55 @@ p,
 div{
     font-weight:400 !important;
 }
+
+.icon{
+    width:52px;
+    height:52px;
+    display:inline-block;
+
+    background-image:url("/assets/images/iconsGame.png");
+    background-repeat:no-repeat;
+    background-size:200% 500%;
+
+    image-rendering: pixelated;
+}
+
+.icon-gatito{
+    background-position:0% 0%;
+}
+
+.icon-dinheiro{
+    background-position:100% 0%;
+}
+
+.icon-clickUp{
+    background-position:0% 25%;
+}
+
+.icon-autoClick{
+    background-position:100% 25%;
+}
+
+.icon-config{
+    background-position:0% 50%;
+}
+
+.icon-logOut{
+    background-position:100% 50%;
+}
+
+.icon-music{
+    background-position:0% 75%;
+}
+
+.icon-musicOff{
+    background-position:100% 75%;
+}
+
+.icon-effects{
+    background-position:0% 100%;
+}
+
+.icon-effectsOff{
+    background-position:100% 100%;
+}
