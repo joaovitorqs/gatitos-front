@@ -245,30 +245,9 @@ body{
 
 .shop-btn{
     flex-shrink:0;
-    border:none;
     border-radius:6px;
-    padding:8px 12px;
-    font-family: 'VT323', monospace;
     font-size:0.9rem;
-    cursor:pointer;
-    background:#266d26;
-    color:#fff;
-    transition:background 0.15s ease, transform 0.1s ease;
     white-space:nowrap;
-}
-
-.shop-btn:hover{
-    background:rgb(164, 199, 161);
-}
-
-.shop-btn:active{
-    transform:scale(0.96);
-}
-
-.shop-btn:disabled{
-    background:#8ab18a;
-    color:#ffffff;
-    cursor:not-allowed;
 }
 
 /* ── Bloco 7: configurações ── */
@@ -296,28 +275,17 @@ body{
 }
 
 .settings-btn{
-    border:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
     border-radius:6px;
-    padding:9px 12px;
-    font-family: 'VT323', monospace;
     font-size:1rem;
-    cursor:pointer;
-    background:#22160c;
-    color:#fff;
     margin-top:4px;
-}
-
-.settings-btn:hover{
-    background:#2c2621;
 }
 
 .settings-btn-danger{
     font-size:1rem;
-    background:#b22b32;
-}
-
-.settings-btn-danger:hover{
-    background:#cc3a42;
 }
 
 .credits{
@@ -408,3 +376,57 @@ div{
 .icon-effectsOff{
     background-position:100% 100%;
 }
+
+/* ── Botões com spritesheet (pixel-btn) ── */
+
+.pixel-btn{
+    position:relative;
+    border:none;
+    appearance:none;
+    -webkit-appearance:none;
+    cursor:pointer;
+    font-family:'VT323', monospace;
+    color:#fff;
+    text-shadow:1px 1px 0 rgba(0,0,0,0.35);
+    background-color:transparent;
+    image-rendering:pixelated;
+    image-rendering:crisp-edges;
+
+    border-style:solid;
+    border-width:16px;
+    border-image-slice:16 fill;
+    border-image-width:16px;
+    border-image-repeat:stretch;
+
+    padding:6px 10px;      /* aumente/diminua pra mudar o tamanho geral */
+    min-width:110px;        /* largura mínima */
+    min-height:38px;        /* altura mínima */
+}
+
+.pixel-btn--green{ border-image-source:var(--green-normal); }
+.pixel-btn--green:hover{ border-image-source:var(--green-hover); }
+.pixel-btn--green.stage-1{ border-image-source:var(--green-p1); }
+.pixel-btn--green.stage-2{ border-image-source:var(--green-p2); }
+.pixel-btn--green.stage-3{ border-image-source:var(--green-p3); }
+
+.pixel-btn--brown{ border-image-source:var(--brown-normal); }
+.pixel-btn--brown:hover{ border-image-source:var(--brown-hover); }
+.pixel-btn--brown.stage-1{ border-image-source:var(--brown-p1); }
+.pixel-btn--brown.stage-2{ border-image-source:var(--brown-p2); }
+.pixel-btn--brown.stage-3{ border-image-source:var(--brown-p3); }
+
+.pixel-btn--red{ border-image-source:var(--red-normal); }
+.pixel-btn--red:hover{ border-image-source:var(--red-hover); }
+.pixel-btn--red.stage-1{ border-image-source:var(--red-p1); }
+.pixel-btn--red.stage-2{ border-image-source:var(--red-p2); }
+.pixel-btn--red.stage-3{ border-image-source:var(--red-p3); }
+
+.pixel-btn__label{
+    display:inline-block;
+    transition:transform 40ms linear;
+    transform:translateY(-9px); /* ajusta a posição de repouso (acima do centro) */
+}
+
+.pixel-btn.stage-1 .pixel-btn__label{ transform:translateY(-1.5px); }
+.pixel-btn.stage-2 .pixel-btn__label{ transform:translateY(0px); }
+.pixel-btn.stage-3 .pixel-btn__label{ transform:translateY(1.5px); }
