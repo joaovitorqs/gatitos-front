@@ -230,3 +230,81 @@ function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+/**
+ * Recorta um spritesheet (128x64, 5 frames de 32x32) em 5 data URLs,
+ * uma para cada estado, e injeta como variáveis CSS no :root.
+ *
+ * Layout do sheet:
+ *  col0 = pressed3 | col1 = pressed2 | col2 = pressed1 | col3 = normal   (linha de cima)
+ *  bottom-left     = hover                                              (linha de baixo)
+ */
+function sliceButtonSheet(sheetSrc, cssPrefix) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => {
+      const FRAME = 32;
+      const SCALE = 4; // upscale para manter nitidez do pixel art no border-image
+      const frames = {
+        p3:     { x: 0,        y: 0 },
+        p2:     { x: FRAME,    y: 0 },
+        p1:     { x: FRAME*2,  y: 0 },
+        normal: { x: FRAME*3,  y: 0 },
+        hover:  { x: 0,        y: FRAME },
+      };
+
+      const canvas = document.createElement('canvas');
+      canvas.width = FRAME * SCALE;
+      canvas.height = FRAME * SCALE;
+      const ctx = canvas.getContext('2d');
+      ctx.imageSmoothingEnabled = false;
+
+      const root = document.documentElement.style;
+
+      for (const [state, pos] of Object.entries(frames)) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(
+          img,
+          pos.x, pos.y, FRAME, FRAME,      // origem no sheet
+          0, 0, FRAME * SCALE, FRAME * SCALE // destino no canvas (ampliado)
+        );
+        const dataUrl = canvas.toDataURL('image/png');
+        const varName = state === 'normal' ? `--${cssPrefix}-normal`
+                      : state === 'hover'  ? `--${cssPrefix}-hover`
+                      : `--${cssPrefix}-${state.replace('p','p')}`; // p1, p2, p3
+        root.setProperty(varName, `url(${dataUrl})`);
+      }
+      resolve();
+    };
+    img.onerror = reject;
+    img.src = sheetSrc;
+  });
+}
+
+// Inicializa as 3 cores ao carregar a página
+Promise.all([
+  sliceButtonSheet('/assets/images/spritesheet_botton_green.png', 'green'),
+  sliceButtonSheet('/assets/images/spritesheet_botton_brown.png', 'brown'),
+  sliceButtonSheet('/assets/images/spritesheet_botton_red.png', 'red'),
+]).then(() => {
+  console.log('Sprites de botão prontos.');
+});
+
+function animateClick(button) {
+  const stages = ['stage-1', 'stage-2', 'stage-3'];
+  let i = 0;
+  const interval = setInterval(() => {
+    button.classList.remove(...stages);
+    button.classList.add(stages[i]);
+    i++;
+    if (i >= stages.length) {
+      clearInterval(interval);
+      setTimeout(() => button.classList.remove(...stages), 50);
+    }
+  }, 40);
+}
+
+document.querySelectorAll('.pixel-btn').forEach(btn => {
+  btn.addEventListener('mousedown', () => animateClick(btn));
+});
