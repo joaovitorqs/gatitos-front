@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
   <link href="/css/game.css" rel="stylesheet" />
 </head>
+
 <body>
   <div class="layout">
 
@@ -65,65 +66,77 @@
   </div>
 </section>
 
-    <!-- Bloco 6: venda de gatinhos e upgrades -->
-    <section class="bloco bloco6">
-      <div class="shop">
-        <div class="shop-column">
-          <h2>Adoção</h2>
-          <div class="shop-item">
-            <div class="shop-item-info">
-              <strong>Doar um gatito</strong>
-              <span>Doa 1 gatito por dinheiro</span>
-            </div>
-            <button id="sellOneBtn" class="shop-btn">Doar (R$ <span id="sellOnePrice">10</span>)</button>
-          </div>
-          <div class="shop-item">
-            <div class="shop-item-info">
-              <strong>Doar todos gatitos</strong>
-              <span>Doa todos os gatitos disponíveis</span>
-            </div>
-            <button id="sellAllBtn" class="shop-btn">Doar Todos</button>
-          </div>
+<!-- Bloco 6: venda de gatinhos e upgrades -->
+<section class="bloco bloco6">
+  <div class="shop">
+    <div class="shop-column">
+      <h2>Adoção</h2>
+      <div class="shop-item">
+        <div class="shop-item-info">
+          <strong>Doar um gatito</strong>
+          <span>Doa 1 gatito por dinheiro</span>
         </div>
-
-        <div class="shop-column">
-          <h2>Upgrades</h2>
-          <div class="shop-item">
-            <div class="shop-item-info">
-              <strong>Clique Up</strong>
-              <span id="clickUpgradeDesc">+1 gatito por clique</span>
-            </div>
-            <button id="buyClickBtn" class="shop-btn">Comprar (R$ <span id="clickUpgradePrice">50</span>)</button>
-          </div>
-          <div class="shop-item">
-            <div class="shop-item-info">
-              <strong>Autoclick</strong>
-              <span id="autoUpgradeDesc">Resgata gatitos automaticamente</span>
-            </div>
-            <button id="buyAutoBtn" class="shop-btn">Comprar (R$ <span id="autoUpgradePrice">100</span>)</button>
-          </div>
-        </div>
+        <button id="sellOneBtn" class="shop-btn pixel-btn pixel-btn--green">
+          <span class="pixel-btn__label">Doar (R$ <span id="sellOnePrice">10</span>)</span>
+        </button>
       </div>
-    </section>
-
-    <!-- Bloco 7: configurações -->
-    <section class="bloco bloco7">
-      <div class="settings">
-        <h2>Configurações</h2>
-
-        <button id="resetPasswordBtn" class="settings-btn">
-          <span class="icon icon-config"></span>
-          Redefinir senha</button>
-        <button id="logoutBtn" class="settings-btn settings-btn-danger">
-          <span class="icon icon-logOut"></span>
-          Sair</button>
-
-        <div class="credits">
-          <p>Desenvolvido por <strong>João Vitor Q. Santos</strong></p>
-          <a href="https://github.com/joaovitorqs" target="_blank" rel="noopener noreferrer">GitHub do Desenvolvedor </a>
+      <div class="shop-item">
+        <div class="shop-item-info">
+          <strong>Doar todos gatitos</strong>
+          <span>Doa todos os gatitos disponíveis</span>
         </div>
+        <button id="sellAllBtn" class="shop-btn pixel-btn pixel-btn--green">
+          <span class="pixel-btn__label">Doar Todos</span>
+        </button>
       </div>
-    </section>
+    </div>
+
+    <div class="shop-column">
+      <h2>Upgrades</h2>
+      <div class="shop-item">
+        <div class="shop-item-info">
+          <strong>Clique Up</strong>
+          <span id="clickUpgradeDesc">+1 gatito por clique</span>
+        </div>
+        <button id="buyClickBtn" class="shop-btn pixel-btn pixel-btn--green">
+          <span class="pixel-btn__label">Comprar (R$ <span id="clickUpgradePrice">50</span>)</span>
+        </button>
+      </div>
+      <div class="shop-item">
+        <div class="shop-item-info">
+          <strong>Autoclick</strong>
+          <span id="autoUpgradeDesc">Resgata gatitos automaticamente</span>
+        </div>
+        <button id="buyAutoBtn" class="shop-btn pixel-btn pixel-btn--green">
+          <span class="pixel-btn__label">Comprar (R$ <span id="autoUpgradePrice">100</span>)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bloco 7: configurações -->
+<section class="bloco bloco7">
+  <div class="settings">
+    <h2>Configurações</h2>
+
+    <button id="resetPasswordBtn" class="settings-btn pixel-btn pixel-btn--brown">
+      <span class="pixel-btn__label">
+        Redefinir senha
+      </span>
+    </button>
+    <button id="logoutBtn" class="settings-btn pixel-btn pixel-btn--red">
+      <span class="pixel-btn__label">
+        Sair
+      </span>
+    </button>
+
+    <div class="credits">
+      <p>Desenvolvido por <strong>João Vitor Q. Santos</strong></p>
+      <a href="https://github.com/joaovitorqs" target="_blank" rel="noopener noreferrer">GitHub do Desenvolvedor </a>
+    </div>
+  </div>
+</section>
 
   </div>
   <script src="/js/game.js"></script>
