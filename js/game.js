@@ -245,13 +245,14 @@ function sliceButtonSheet(sheetSrc, cssPrefix) {
     img.crossOrigin = 'anonymous';
     img.onload = () => {
       const FRAME = 32;
-      const SCALE = 4; // upscale para manter nitidez do pixel art no border-image
+      const SCALE = 4;
       const frames = {
-        p3:     { x: 0,        y: 0 },
-        p2:     { x: FRAME,    y: 0 },
-        p1:     { x: FRAME*2,  y: 0 },
-        normal: { x: FRAME*3,  y: 0 },
-        hover:  { x: 0,        y: FRAME },
+        p3:       { x: 0,        y: 0 },
+        p2:       { x: FRAME,    y: 0 },
+        p1:       { x: FRAME*2,  y: 0 },
+        normal:   { x: FRAME*3,  y: 0 },
+        hover:    { x: 0,        y: FRAME },
+        disabled: { x: FRAME,    y: FRAME },
       };
 
       const canvas = document.createElement('canvas');
@@ -266,14 +267,11 @@ function sliceButtonSheet(sheetSrc, cssPrefix) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(
           img,
-          pos.x, pos.y, FRAME, FRAME,      // origem no sheet
-          0, 0, FRAME * SCALE, FRAME * SCALE // destino no canvas (ampliado)
+          pos.x, pos.y, FRAME, FRAME,
+          0, 0, FRAME * SCALE, FRAME * SCALE
         );
         const dataUrl = canvas.toDataURL('image/png');
-        const varName = state === 'normal' ? `--${cssPrefix}-normal`
-                      : state === 'hover'  ? `--${cssPrefix}-hover`
-                      : `--${cssPrefix}-${state.replace('p','p')}`; // p1, p2, p3
-        root.setProperty(varName, `url(${dataUrl})`);
+        root.setProperty(`--${cssPrefix}-${state}`, `url(${dataUrl})`);
       }
       resolve();
     };

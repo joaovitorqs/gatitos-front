@@ -430,3 +430,10 @@ div{
 .pixel-btn.stage-1 .pixel-btn__label{ transform:translateY(-1.5px); }
 .pixel-btn.stage-2 .pixel-btn__label{ transform:translateY(0px); }
 .pixel-btn.stage-3 .pixel-btn__label{ transform:translateY(1.5px); }
+
+.pixel-btn:disabled{
+    cursor:not-allowed;
+    filter:grayscale(0.15);
+}
+
+.pixel-btn--green:disabled{ border-image-source:var(--green-disabled); }
