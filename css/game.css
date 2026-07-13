@@ -103,7 +103,7 @@ body{
     align-items:center;
     justify-content:center;
     gap:16px;
-    background:radial-gradient(circle at center, #a78569 0%, #965e30 70%);
+    background: transparent;
 }
 
 .cat-box{
@@ -437,3 +437,31 @@ div{
 }
 
 .pixel-btn--green:disabled{ border-image-source:var(--green-disabled); }
+
+.bloco2 {
+  background-image: url('/assets/images/bloco02.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bloco6 {
+  background-image: url('/assets/images/bloco06.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bloco7 {
+  background-image: url('/assets/images/bloco07.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bloco1 {
+  background-image: url('/assets/images/bloco01.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
