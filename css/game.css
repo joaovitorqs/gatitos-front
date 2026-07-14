@@ -291,7 +291,7 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
-    width: 132px;
+    width: 140px;
     gap:8px;
     border-radius:6px;
     font-size:1rem;
@@ -387,9 +387,9 @@ div{
     image-rendering:crisp-edges;
 
     border-style:solid;
-    border-width:12px;
-    border-image-slice:12 fill;
-    border-image-width:12px;
+    border-width:16px;
+    border-image-slice:16 fill;
+    border-image-width:16px;
     border-image-repeat:stretch;
 
     padding:4px 8.5px;      /* aumente/diminua pra mudar o tamanho geral */
