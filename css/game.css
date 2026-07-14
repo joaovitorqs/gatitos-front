@@ -155,16 +155,16 @@ body{
     display:flex;
     flex-direction:column;
     justify-content: center;
-    gap:10px;
-    padding:20px 28px;
+    gap:5px;
+    padding:10px 14px;
     box-sizing: border-box;
     overflow: hidden;
 }
 
 .stats h2{
     font-family: 'VT323', monospace;
-    margin-bottom:6px;
-    color:#3a2a1a; /* trocar pra escuro — fundo agora é claro */
+    margin-bottom:3px;
+    color:#292929; 
     text-align: center;
 }
 
@@ -172,17 +172,20 @@ body{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:8px 12px;
-    background:#633f22;
-    border-radius:8px;
+    padding:4px 6px;
+    border-radius:4px;
 }
 
 .stat-label{
-    color:#ffffff;
+    color:#292929;
+     display:flex;
+    align-items:center;
+    gap:6px;
+    flex-direction:row-reverse;
 }
 
 .stat-value{
-    color:#ffffff;
+    color:#292929;
 }
 
 /* ── Blocos 3, 4, 5: placeholders ── */
@@ -226,6 +229,7 @@ body{
 }
 
 .shop-column h2{
+    align-self:center;
     font-family: 'VT323', monospace;
     margin-bottom:4px;
 }
@@ -235,7 +239,7 @@ body{
     justify-content:space-between;
     align-items:center;
     gap:10px;
-    background:#633f22;
+    background:#633f2283;
     border-radius:8px;
     padding:10px 12px;
 }
@@ -273,6 +277,7 @@ body{
 .settings h2{
     font-family: 'VT323', monospace;
     margin-bottom:4px;
+    align-self:center;
 }
 
 .settings-row{
@@ -286,10 +291,12 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
+    width: 132px;
     gap:8px;
     border-radius:6px;
     font-size:1rem;
     margin-top:4px;
+    align-self:center;
 }
 
 .settings-btn-danger{
@@ -334,57 +341,36 @@ div{
 }
 
 .icon{
-    width:52px;
-    height:52px;
     display:inline-block;
-
     background-image:url("/assets/images/iconsGame.png");
     background-repeat:no-repeat;
-    background-size:200% 500%;
-
-    image-rendering: pixelated;
+    background-size:240.77px 58.41px;
+    image-rendering:pixelated;
 }
 
 .icon-gatito{
-    background-position:0% 0%;
+    width:54.14px;
+    height:44.4px;
+    background-position:0.47px -8.31px;
 }
 
 .icon-dinheiro{
-    background-position:100% 0%;
+    width:52.71px;
+    height:47.96px;
+    background-position:-63.16px -6.89px;
 }
 
 .icon-clickUp{
-    background-position:0% 25%;
+    width:34.67px;
+    height:52px;
+    background-position:-138.19px -4.99px;
 }
 
 .icon-autoClick{
-    background-position:100% 25%;
+    width:51.29px;
+    height:51.05px;
+    background-position:-190.19px -5.94px;
 }
-
-.icon-config{
-    background-position:0% 50%;
-}
-
-.icon-logOut{
-    background-position:100% 50%;
-}
-
-.icon-music{
-    background-position:0% 75%;
-}
-
-.icon-musicOff{
-    background-position:100% 75%;
-}
-
-.icon-effects{
-    background-position:0% 100%;
-}
-
-.icon-effectsOff{
-    background-position:100% 100%;
-}
-
 /* ── Botões com spritesheet (pixel-btn) ── */
 
 .pixel-btn{
@@ -401,13 +387,13 @@ div{
     image-rendering:crisp-edges;
 
     border-style:solid;
-    border-width:16px;
-    border-image-slice:16 fill;
-    border-image-width:16px;
+    border-width:12px;
+    border-image-slice:12 fill;
+    border-image-width:12px;
     border-image-repeat:stretch;
 
-    padding:6px 10px;      /* aumente/diminua pra mudar o tamanho geral */
-    min-width:110px;        /* largura mínima */
+    padding:4px 8.5px;      /* aumente/diminua pra mudar o tamanho geral */
+    min-width:132px;        /* largura mínima */
     min-height:38px;        /* altura mínima */
 }
 
@@ -432,7 +418,7 @@ div{
 .pixel-btn__label{
     display:inline-block;
     transition:transform 40ms linear;
-    transform:translateY(-9px); /* ajusta a posição de repouso (acima do centro) */
+    transform:translateY(-7px); /* ajusta a posição de repouso (acima do centro) */
 }
 
 .pixel-btn.stage-1 .pixel-btn__label{ transform:translateY(-1.5px); }
