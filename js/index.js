@@ -97,13 +97,14 @@ async function handleLogin() {
 
     if (res.ok) {
       localStorage.setItem('token', data.token);
+      localStorage.setItem('rescueGatitosSave', JSON.stringify({
+        cats: data.gameState.qtdGatitos,
+        money: data.gameState.dinheiro,
+        clickLevel: data.gameState.levelClick,
+        autoLevel: data.gameState.levelAutoClick,
+      }));
 
-      showFeedback(
-        'login-feedback',
-        'success',
-        `Bem-vindo, ${data.nickName}! Redirecionando...`
-      );
-
+      showFeedback('login-feedback', 'success', `Bem-vindo, ${data.nickName}! Redirecionando...`);
       window.location.href = '/pages/game.html';
     } else {
       showFeedback(
@@ -179,14 +180,15 @@ async function handleRegister() {
 
     if (res.ok) {
       localStorage.setItem('token', data.token);
+      localStorage.setItem('rescueGatitosSave', JSON.stringify({
+        cats: data.gameState.qtdGatitos,
+        money: data.gameState.dinheiro,
+        clickLevel: data.gameState.levelClick,
+        autoLevel: data.gameState.levelAutoClick,
+      }));
 
-      showFeedback(
-        'register-feedback',
-        'success',
-        `Conta criada! Bem-vindo, ${data.nickName}!`
-      );
-
-       window.location.href = '/pages/game.html';
+      showFeedback('login-feedback', 'success', `Bem-vindo, ${data.nickName}! Redirecionando...`);
+      window.location.href = '/pages/game.html';
     } else {
       showFeedback(
         'register-feedback',

@@ -54,8 +54,36 @@ function loadState() {
   }
 }
 
+const API = 'http://localhost:9090';
+let syncTimeout = null;
+
 function saveState() {
   localStorage.setItem(SAVE_KEY, JSON.stringify(state));
+  clearTimeout(syncTimeout);
+  syncTimeout = setTimeout(syncStateToServer, 1500);
+}
+
+async function syncStateToServer() {
+  const token = localStorage.getItem('token');
+  if (!token) return;
+
+  try {
+    await fetch(`${API}/game/state`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        qtdGatitos: state.cats,
+        dinheiro: state.money,
+        levelClick: state.clickLevel,
+        levelAutoClick: state.autoLevel
+      })
+    });
+  } catch (e) {
+    console.warn('Falha ao sincronizar progresso:', e);
+  }
 }
 
 /* ── Preços (escalam com o nível) ── */
