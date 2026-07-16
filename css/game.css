@@ -258,7 +258,7 @@ body{
 .shop-btn{
     flex-shrink:0;
     border-radius:6px;
-    font-size:0.9rem;
+    font-size:1.3rem;
     white-space:nowrap;
 }
 
@@ -294,13 +294,13 @@ body{
     width: 140px;
     gap:8px;
     border-radius:6px;
-    font-size:1rem;
+    font-size:1.3rem;
     margin-top:4px;
     align-self:center;
 }
 
 .settings-btn-danger{
-    font-size:1rem;
+    font-size:1.3rem;
 }
 
 .credits{
