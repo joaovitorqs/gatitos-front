@@ -60,7 +60,7 @@ let syncTimeout = null;
 function saveState() {
   localStorage.setItem(SAVE_KEY, JSON.stringify(state));
   clearTimeout(syncTimeout);
-  syncTimeout = setTimeout(syncStateToServer, 1500);
+  syncTimeout = setTimeout(syncStateToServer, 900);
 }
 
 async function syncStateToServer() {
