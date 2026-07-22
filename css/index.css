@@ -61,7 +61,7 @@
       padding-right: 5%;
     }
 
-    /* ── Right panel (30%) ── */
+    /* ── Painel ── */
     .right {
 
       width: 420px;
@@ -86,7 +86,6 @@
         0 20px 50px rgba(0, 0, 0, .30);
     }
 
-    /* ── Brand ── */
     .brand {
       display: flex;
       align-items: center;
@@ -376,7 +375,6 @@
       background: var(--border);
     }
 
-    /* ── Responsive ── */
     @media (max-width: 768px) {
       .layout {
         flex-direction: column;

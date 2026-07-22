@@ -22,8 +22,6 @@ body{
     color:#ffffff;
 }
 
-/* Layout principal */
-
 .layout{
 
     width:100vw;
@@ -55,8 +53,6 @@ body{
     background-repeat:no-repeat;
     overflow:hidden;
 }
-
-/* Posicionamento */
 
 .bloco1{
     grid-column:1 / 3;
@@ -188,7 +184,7 @@ body{
     color:#292929;
 }
 
-/* ── Blocos 3, 4, 5: placeholders ── */
+/* ── Blocos 3, 4, 5 ── */
 
 .placeholder-bloco{
     display:flex;
@@ -210,7 +206,7 @@ body{
     object-fit: cover;
 }
 
-/* ── Bloco 6: loja (venda + upgrades) ── */
+/* ── Bloco 6: doacao + upgrades ── */
 
 .shop{
     width:100%;
@@ -371,7 +367,7 @@ div{
     height:51.05px;
     background-position:-190.19px -5.94px;
 }
-/* ── Botões com spritesheet (pixel-btn) ── */
+/* ── Botões com spritesheet ── */
 
 .pixel-btn{
     position:relative;
@@ -392,9 +388,9 @@ div{
     border-image-width:16px;
     border-image-repeat:stretch;
 
-    padding:4px 8.5px;      /* aumente/diminua pra mudar o tamanho geral */
-    min-width:132px;        /* largura mínima */
-    min-height:38px;        /* altura mínima */
+    padding:4px 8.5px;
+    min-width:132px;
+    min-height:38px;
 }
 
 .pixel-btn--green{ border-image-source:var(--green-normal); }
@@ -418,7 +414,7 @@ div{
 .pixel-btn__label{
     display:inline-block;
     transition:transform 40ms linear;
-    transform:translateY(-7px); /* ajusta a posição de repouso (acima do centro) */
+    transform:translateY(-7px);
 }
 
 .pixel-btn.stage-1 .pixel-btn__label{ transform:translateY(-1.5px); }
