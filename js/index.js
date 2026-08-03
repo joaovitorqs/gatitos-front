@@ -1,4 +1,6 @@
-const API = 'http://localhost:9090';
+const API = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+  ? 'http://localhost:9090'
+  : 'https://rescue-gatitos.duckdns.org';
 
 /* ── Tab switching ── */
 function switchTab(tab) {
@@ -207,7 +209,6 @@ async function handleRegister() {
   }
 }
 
-/* ── Enter key submit ── */
 document.addEventListener('keydown', e => {
   if (e.key !== 'Enter') return;
 
