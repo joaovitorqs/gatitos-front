@@ -1,31 +1,20 @@
-/* ── game.js ──
-   Primeira coisa que roda: verifica se há token válido.
-   Sem token → redireciona para o login imediatamente.
-   Com token → libera a página normalmente.
-*/
-
 (function guardRoute() {
   const token = localStorage.getItem('token');
 
   if (!token) {
-    // Sem token: volta para o login
     window.location.replace('../index.html');
     return;
   }
 
-  // Token existe: decodifica o payload para checar expiração
   try {
     const payload = JSON.parse(atob(token.split('.')[1]));
     const now = Math.floor(Date.now() / 1000);
 
     if (payload.exp && payload.exp < now) {
-      // Token expirado: limpa e redireciona
       localStorage.removeItem('token');
       window.location.replace('../index.html');
     }
-    // Token válido → página carrega normalmente
   } catch {
-    // Token malformado: limpa e redireciona
     localStorage.removeItem('token');
     window.location.replace('../index.html');
   }
@@ -38,8 +27,8 @@ const SAVE_KEY = 'rescueGatitosSave';
 const defaultState = {
   cats: 0,
   money: 0,
-  clickLevel: 1,      // gatinhos por clique = clickLevel
-  autoLevel: 0,        // gatinhos por segundo = autoLevel
+  clickLevel: 1,
+  autoLevel: 0,
 };
 
 let state = loadState();
@@ -54,7 +43,9 @@ function loadState() {
   }
 }
 
-const API = 'http://localhost:9090';
+const API = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+  ? 'http://localhost:9090'
+  : 'https://rescue-gatitos.duckdns.org';
 let syncTimeout = null;
 
 function saveState() {
@@ -85,8 +76,6 @@ async function syncStateToServer() {
     console.warn('Falha ao sincronizar progresso:', e);
   }
 }
-
-/* ── Preços (escalam com o nível) ── */
 
 const SELL_ONE_BASE = 10;
 const CLICK_UPGRADE_BASE = 50;
@@ -156,8 +145,6 @@ function render() {
 
 }
 
-/* ── Ações ── */
-
 function showFloatText(text, x, y) {
   const el = document.createElement('div');
   el.className = 'float-text';
@@ -175,7 +162,7 @@ function handleClick(e) {
   render();
 
   els.catBox.classList.remove('bounce');
-  void els.catBox.offsetWidth; // reinicia a animação
+  void els.catBox.offsetWidth;
   els.catBox.classList.add('bounce');
 
   const rect = els.clickArea.getBoundingClientRect();
@@ -218,7 +205,7 @@ function buyAutoUpgrade() {
   render();
 }
 
-/* ── Autoclick (tick a cada segundo) ── */
+/* ── Autoclick ── */
 
 function autoTick() {
   if (state.autoLevel > 0) {
@@ -231,7 +218,6 @@ function autoTick() {
 /* ── Configurações ── */
 
 function resetPassword() {
-  // Placeholder: fluxo real de redefinição ainda será implementado
   alert('Em breve: fluxo de redefinição de senha.');
 }
 
@@ -239,8 +225,6 @@ function logout() {
   localStorage.removeItem('token');
   window.location.replace('../index.html');
 }
-
-/* ── Inicialização ── */
 
 function init() {
   cacheEls();
@@ -259,14 +243,6 @@ function init() {
 
 document.addEventListener('DOMContentLoaded', init);
 
-/**
- * Recorta um spritesheet (128x64, 5 frames de 32x32) em 5 data URLs,
- * uma para cada estado, e injeta como variáveis CSS no :root.
- *
- * Layout do sheet:
- *  col0 = pressed3 | col1 = pressed2 | col2 = pressed1 | col3 = normal   (linha de cima)
- *  bottom-left     = hover                                              (linha de baixo)
- */
 function sliceButtonSheet(sheetSrc, cssPrefix) {
   return new Promise((resolve, reject) => {
     const img = new Image();
@@ -308,7 +284,6 @@ function sliceButtonSheet(sheetSrc, cssPrefix) {
   });
 }
 
-// Inicializa as 3 cores ao carregar a página
 Promise.all([
   sliceButtonSheet('/assets/images/spritesheet_botton_green.png', 'green'),
   sliceButtonSheet('/assets/images/spritesheet_botton_brown.png', 'brown'),
