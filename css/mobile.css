@@ -1,0 +1,111 @@
+:root {
+    --white: #FFFFFF;
+    --panel: #F4F4F5;
+    --border: #E4E4E7;
+    --text: #18181B;
+    --muted: #71717A;
+    --accent: #9e6d4a;
+    --accent-h: #B57C54;
+    --radius: 10px;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 24px;
+    background: url("../assets/images/index.jpeg") center center / cover no-repeat fixed;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.55) 100%);
+    z-index: 0;
+  }
+
+  .card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 380px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 0 12px 32px rgba(0,0,0,.25);
+  }
+
+  .cat {
+    width: 88px;
+    height: 88px;
+    object-fit: contain;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 20px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  p.subtitle {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  .contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .contacts a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+    background: var(--accent);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    transition: background 180ms ease;
+  }
+
+  .contacts a:hover {
+    background: var(--accent-h);
+  }
+
+  .contacts a svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+
+  .footer-note {
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--muted);
+  }
