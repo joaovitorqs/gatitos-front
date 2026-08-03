@@ -5,7 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rescue Gatitos — Game</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/images/catInBox.png" />
   <link href="/css/game.css" rel="stylesheet" />
+  <script>
+  (function () {
+    var isMobilePage = window.location.pathname.includes('mobile.html');
+    if (isMobilePage) return;
+
+    var isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (isMobile) {
+      window.location.replace('/pages/mobile.html');
+    }
+  })();
+</script>
 </head>
 
 <body>
