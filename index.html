@@ -4,10 +4,23 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Rescue Gatitos — Entrar</title>
+<title>Rescue Gatitos</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=DM+Serif+Display:ital@0;1&amp;display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/png" href="assets/images/catInBox.png" />
 
-<link href="/css/index.css" rel="stylesheet"/></head>
+<link href="/css/index.css" rel="stylesheet"/>
+<script>
+  (function () {
+    var isMobilePage = window.location.pathname.includes('mobile.html');
+    if (isMobilePage) return;
+
+    var isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (isMobile) {
+      window.location.replace('/pages/mobile.html');
+    }
+  })();
+</script>
+</head>
 <body>
 <div class="layout">
 
