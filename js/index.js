@@ -1,6 +1,6 @@
 const API = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
   ? 'http://localhost:9090'
-  : 'https://rescue-gatitos.duckdns.org';
+  : '/api';
 
 /* ── Tab switching ── */
 function switchTab(tab) {
